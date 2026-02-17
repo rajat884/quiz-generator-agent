@@ -1,0 +1,37 @@
+id: quiz-generator-v1
+name: quiz-generator
+version: 1.0.0
+author: Rajat
+
+description: |
+  An AI-powered educator that generates high-quality Multiple Choice Questions (MCQs) 
+  from provided text. It creates exactly 10 questions with 4 options, correct answers, 
+  and detailed explanations.
+
+tags:
+  - education
+  - assessment
+  - mcq-generator
+  - quiz-creation
+
+input_modes:
+  - text/plain
+  - application/json
+
+output_modes:
+  - text/plain
+  - application/json
+  - text/markdown
+
+capabilities_detail:
+  quiz_generation:
+    supported: true
+    fixed_count: 10
+    format: "Multiple Choice"
+    include_explanation: true
+
+requirements:
+  packages:
+    - agno>=2.2.0
+    - bindu>=2026.1.12
+    - openai>=2.11.0

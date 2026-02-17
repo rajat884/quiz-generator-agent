@@ -1,0 +1,26 @@
+{
+  "name": "quiz-generator-agent",
+  "author": "Rajat",
+  "description": "AI agent that generates 10 MCQs from provided text.",
+  "version": "1.0.0",
+  "storage": {
+    "type": "memory"
+  },
+  "scheduler": {
+    "type": "memory"
+  },
+  "skills": [
+    "skills/question-answering"
+  ],
+  "deployment": {
+    "url": "http://127.0.0.1:3773",
+    "expose": true,
+    "protocol_version": "1.0.0",
+    "proxy_urls": [
+      "0.0.0.0"
+    ],
+    "cors_origins": [
+      "*"
+    ]
+  }
+}
