@@ -13,7 +13,6 @@ from agno.models.openrouter import OpenRouter
 from bindu.penguin.bindufy import bindufy
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 agent: Agent | None = None
@@ -24,7 +23,7 @@ _init_lock = asyncio.Lock()
 def load_config() -> dict:
     """Load agent configuration and force local memory storage to avoid DB errors."""
     config_path = Path(__file__).parent.parent / "agent_config.json"
-    
+
     config = {}
     if config_path.exists():
         try:
@@ -35,14 +34,14 @@ def load_config() -> dict:
 
     config["storage"] = {"type": "memory"}
     config["scheduler"] = {"type": "memory"}
-    
+
     if "name" not in config:
         config["name"] = "quiz-generator-agent"
     if "author" not in config:
         config["author"] = "developer@example.com"
     if "deployment" not in config:
         config["deployment"] = {"url": "http://127.0.0.1:3773", "expose": True}
-        
+
     return config
 
 
@@ -52,7 +51,7 @@ async def initialize_agent() -> None:
 
     # Get API keys and Model from environment
     openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
-   
+
     model_name = os.getenv("MODEL_NAME", "google/gemini-2.0-flash-lite-preview-02-05:free")
 
     if not openrouter_api_key:
@@ -123,12 +122,12 @@ async def handler(messages: list[dict[str, str]]) -> Any:
 def main():
     """Run the main entry point for the Bindu-powered Quiz Agent."""
     print("🤖 Quiz Generator Agent - Starting Server...")
-    
+
     # Set model name if passed as argument, otherwise use .env
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, default=os.getenv("MODEL_NAME"))
     args = parser.parse_args()
-    
+
     if args.model:
         os.environ["MODEL_NAME"] = args.model
 

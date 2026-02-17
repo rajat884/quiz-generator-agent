@@ -1,6 +1,7 @@
-import requests
-import uuid
 import time
+import uuid
+
+import requests
 
 URL = "http://127.0.0.1:3773/"
 
@@ -37,6 +38,7 @@ maintaining atmospheric oxygen levels.
 
 
 # ---------- Helpers ----------
+
 
 def send_message(text: str) -> str:
     payload = {
@@ -113,13 +115,13 @@ def validate_and_print(topic: str, output: str):
     print(f"\n🎯 GENERATED MCQs ({topic})\n")
     print(output)
 
-   
     assert output is not None
-    assert len(output.strip()) > 300          
+    assert len(output.strip()) > 300
     assert output.lower().count("question") >= 5
 
 
 # ---------- Tests ----------
+
 
 def test_history_mcqs():
     print("\n🧪 Test 1: History")
